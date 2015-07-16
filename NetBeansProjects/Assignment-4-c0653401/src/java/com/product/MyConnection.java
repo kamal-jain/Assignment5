@@ -6,6 +6,7 @@
 
 package com.product;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -14,8 +15,8 @@ import java.sql.SQLException;
  * @author c0653401
  */
 class MyConnection {
-    public  java.sql.Connection getConnection() {
-        java.sql.Connection conn = null;
+    public static Connection getConnection() {
+        Connection conn = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
@@ -23,8 +24,8 @@ class MyConnection {
         }
 
         try {
-            String jdbc = "jdbc:mysql://ipro.lambton.on.ca/inventory";
-            conn = DriverManager.getConnection(jdbc, "products", "products");
+            String jdbc = "jdbc:mysql://127.0.0.1/c0653401";
+            conn = DriverManager.getConnection(jdbc, "root", "");
         } catch (SQLException ex) {
             System.err.println("Failed to Connect: " + ex.getMessage());
         }
